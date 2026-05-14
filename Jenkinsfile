@@ -19,11 +19,11 @@ pipeline {
             }
         }
         stage('Deploy to K8s') {
-            steps {
-                sh "kubectl apply -f k8s/backend-deployment.yaml"
-                sh "kubectl apply -f k8s/frontend-deployment.yaml"
-                sh "kubectl apply -f k8s/services.yaml"
-            }
+           steps {
+              sh "kubectl apply -f k8s/backend-deployment.yaml"
+              sh "kubectl apply -f k8s/frontend-deployment.yaml"
+              sh "kubectl apply -f k8s/services.yaml"
+          }
         }
     }
 }
