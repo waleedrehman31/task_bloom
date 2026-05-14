@@ -4,7 +4,12 @@ pipeline {
         APP_NAME = "taskbloom"
     }
     stages {
-       
+        stage('Remove old deployments') {
+          steps {
+            sh "kubectl delete services --all"
+            sh "kubectl delete deployments --all"
+          }
+        }
         stage('Build & Push Docker Images') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-id', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
@@ -24,6 +29,9 @@ pipeline {
               sh "kubectl apply -f k8s/frontend-deployment.yaml"
               sh "kubectl apply -f k8s/services.yaml"
           }
+        }
+        stage('port farwording') {
+            sh "kubectl --kubeconfig=$HOME/.kube/config port-forward --address 0.0.0.0 service/frontend-service 80:80 &"
         }
     }
 }
