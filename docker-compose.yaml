@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: ./backend
+    image: waleedrehman31/taskbloom-backend:latest
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./frontend
+    image: waleedrehman31/taskbloom-frontend:latest
+    ports:
+      - "80:80"
+    environment:
+      - REACT_APP_API_URL=http://<EC2-PUBLIC-IP>:5001
