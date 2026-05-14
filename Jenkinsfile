@@ -30,8 +30,11 @@ pipeline {
               sh "kubectl apply -f k8s/services.yaml"
           }
         }
+
         stage('port farwording') {
+          steps {
             sh "kubectl --kubeconfig=$HOME/.kube/config port-forward --address 0.0.0.0 service/frontend-service 80:80 &"
+          }
         }
     }
 }
