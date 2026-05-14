@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: waleedrehman31/taskbloom-backend:latest
+          image: waleedrehman31/backend:latest
           ports:
             - containerPort: 5001
 ---

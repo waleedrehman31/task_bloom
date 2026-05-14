@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: waleedrehman31/taskbloom-frontend:latest
+          image: waleedrehman31/frontend:latest
           ports:
             - containerPort: 80
           resources:

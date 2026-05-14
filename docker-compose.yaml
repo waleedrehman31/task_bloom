@@ -1,13 +1,13 @@
 services:
   backend:
     build: ./backend
-    image: waleedrehman31/taskbloom-backend:latest
+    image: waleedrehman31/backend:latest
     ports:
       - "5000:5000"
 
   frontend:
     build: ./frontend
-    image: waleedrehman31/taskbloom-frontend:latest
+    image: waleedrehman31/backend:latest
     ports:
       - "80:80"
     environment:
