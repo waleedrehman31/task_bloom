@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('waleedrehman31')
         APP_NAME = "taskbloom"
     }
     stages {
@@ -12,11 +11,11 @@ pipeline {
         }
         stage('Build & Push Docker Images') {
             steps {
-                sh "docker build -t $DOCKERHUB_CREDENTIALS_USR/backend:latest ./backend"
-                sh "docker build -t $DOCKERHUB_CREDENTIALS_USR/frontend:latest ./frontend"
-                sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
-                sh "docker push $DOCKERHUB_CREDENTIALS_USR/backend:latest"
-                sh "docker push $DOCKERHUB_CREDENTIALS_USR/frontend:latest"
+                sh "docker build -t waleedrehman31/backend:latest ./backend"
+                sh "docker build -t waleedrehman31/frontend:latest ./frontend"
+                sh "echo waleedrehman31 | docker login -u waleedrehman31 --password-stdin"
+                sh "docker push waleedrehman31/backend:latest"
+                sh "docker push waleedrehman31/frontend:latest"
             }
         }
         stage('Deploy to K8s') {
