@@ -4,11 +4,7 @@ pipeline {
         APP_NAME = "taskbloom"
     }
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/waleedrehman31/task_bloom.git'
-            }
-        }
+       
         stage('Build & Push Docker Images') {
             steps {
                 sh "docker build -t waleedrehman31/backend:latest ./backend"
