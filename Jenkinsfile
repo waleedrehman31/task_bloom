@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
-            steps {
-                git 'https://github.com/waleedrehman31/task_bloom.git'
-            }
-        }
-
         stage('Build Backend') {
             steps {
                 sh 'docker build -t $DOCKERHUB/taskbloom-backend ./backend'
